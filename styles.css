@@ -51,8 +51,7 @@ img { display: block; width: 100%; }
   background-image: linear-gradient(rgba(4, 5, 14, .4), rgba(4, 5, 14, .75)), url("photos/intergalactic-bg.jpg");
   background-position: center;
   background-size: cover;
-  transform: translate3d(0, var(--parallax, 0), 0) scale(1.08);
-  will-change: transform;
+  transform: scale(1.08);
 }
 .stars { position: absolute; inset: 0; opacity: .55; }
 .stars-small {
@@ -72,7 +71,6 @@ img { display: block; width: 100%; }
     radial-gradient(circle at 61% 41%, rgba(121,212,239,.8) 0 1px, transparent 2px),
     radial-gradient(circle at 78% 77%, rgba(245,204,114,.8) 0 1.5px, transparent 2px);
   background-size: 520px 520px;
-  transform: translateY(calc(var(--parallax, 0px) * -.5));
 }
 
 .site-header {

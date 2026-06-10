@@ -11,8 +11,6 @@ const primaryStar = document.querySelector(".binary-primary");
 const secondaryStar = document.querySelector(".binary-secondary");
 const solarSystem = document.querySelector(".solar-system");
 const planets = [...document.querySelectorAll(".planet")];
-const nebula = document.querySelector(".nebula");
-const starsLarge = document.querySelector(".stars-large");
 
 document.getElementById("year").textContent = new Date().getFullYear();
 
@@ -271,11 +269,6 @@ const updateScrollEffects = () => {
   const y = window.scrollY;
   header.classList.toggle("is-scrolled", y > 28);
 
-  if (!reduceMotion) {
-    const parallax = Math.min(y * 0.05, 70);
-    if (nebula) nebula.style.transform = `translate3d(0, ${parallax}px, 0) scale(1.08)`;
-    if (starsLarge) starsLarge.style.transform = `translateY(${-parallax * 0.5}px)`;
-  }
 
   let current = "";
   sections.forEach((section) => {
