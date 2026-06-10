@@ -48,7 +48,7 @@ img { display: block; width: 100%; }
 .nebula {
   position: absolute;
   inset: -10%;
-  background-image: linear-gradient(rgba(4, 5, 14, .4), rgba(4, 5, 14, .75)), url("photos/intergalactic-bg.png");
+  background-image: linear-gradient(rgba(4, 5, 14, .4), rgba(4, 5, 14, .75)), url("photos/intergalactic-bg.jpg");
   background-position: center;
   background-size: cover;
   transform: translate3d(0, var(--parallax, 0), 0) scale(1.08);
