@@ -642,17 +642,17 @@ h1 {
 .timeline-node:last-child { margin-bottom: 0; }
 .timeline-left { margin-right: auto; transform: translateX(-3px); }
 .timeline-right { margin-left: auto; transform: translateX(3px); }
-.timeline-node figure { min-height: 65px; margin: 0; }
+.timeline-node figure { min-height: 49px; margin: 0; }
 .timeline-node figure img { height: 100%; object-fit: cover; }
 .timeline-node .timeline-logo {
   display: grid;
-  padding: 12px;
+  padding: 9px;
   background: #b10202;
   place-items: center;
 }
 .timeline-node .timeline-logo img {
   height: auto;
-  max-height: 75px;
+  max-height: 56px;
   object-fit: contain;
 }
 .timeline-node .timeline-logo-lanl {
@@ -897,7 +897,7 @@ footer p:last-child { justify-self: end; }
   .journey { width: 100%; padding-right: 16px; padding-left: 16px; }
   .timeline-line { left: 20px; }
   .timeline-node { grid-template-columns: 1fr; width: calc(100% - 55px); margin: 0 0 40px 55px; }
-  .timeline-node figure { min-height: 80px; }
+  .timeline-node figure { min-height: 60px; }
   .timeline-left, .timeline-right { transform: none; }
   .timeline-left .timeline-dot, .timeline-right .timeline-dot { left: -55px; right: auto; }
   .research-callout { display: block; }
