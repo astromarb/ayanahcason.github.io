@@ -398,7 +398,7 @@ h1 {
 }
 .about-heading > p:last-child { margin-top: 18px; }
 .about { min-height: 950px; }
-.solar-layout { display: grid; grid-template-columns: 1.12fr .88fr; gap: 80px; align-items: center; }
+.solar-layout { display: grid; grid-template-columns: 1.12fr .88fr; gap: 80px; align-items: start; }
 .solar-system {
   position: relative;
   left: 86px;
@@ -629,6 +629,7 @@ h1 {
   position: relative;
   display: grid;
   grid-template-columns: 80px 1fr;
+  column-gap: 12px;
   width: calc(50% - 48px);
   margin-bottom: 36px;
   overflow: hidden;
@@ -643,7 +644,8 @@ h1 {
 .timeline-left { margin-right: auto; transform: translateX(-3px); }
 .timeline-right { margin-left: auto; transform: translateX(3px); }
 .timeline-node figure { min-height: 0; margin: 0; }
-.timeline-node figure img { height: 100%; object-fit: cover; }
+.timeline-node figure:not(.timeline-logo) { padding: 6px 0 6px 6px; }
+.timeline-node figure img { height: 100%; object-fit: cover; border-radius: 6px; }
 .timeline-node .timeline-logo {
   display: grid;
   padding: 9px;
