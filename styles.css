@@ -626,8 +626,7 @@ h1 {
 .timeline-node {
   position: relative;
   display: grid;
-  grid-template-columns: 80px 1fr;
-  column-gap: 12px;
+  grid-template-columns: 1fr;
   width: calc(50% - 48px);
   margin-bottom: 36px;
   overflow: hidden;
@@ -641,31 +640,32 @@ h1 {
 .timeline-node:last-child { margin-bottom: 0; }
 .timeline-left { margin-right: auto; transform: translateX(-3px); }
 .timeline-right { margin-left: auto; transform: translateX(3px); }
-.timeline-node figure { min-height: 0; margin: 0; }
-.timeline-node figure:not(.timeline-logo) { padding: 6px 0 6px 6px; }
-.timeline-node figure img { height: 100%; object-fit: cover; border-radius: 6px; }
+.timeline-node figure { height: 54px; margin: 0; overflow: hidden; }
+.timeline-node figure img { width: 100%; height: 100%; object-fit: cover; border-radius: 0; display: block; }
 .timeline-node .timeline-logo {
   display: grid;
-  padding: 9px;
+  height: 54px;
+  padding: 10px 20px;
   background: #b10202;
   place-items: center;
 }
 .timeline-node .timeline-logo img {
-  height: auto;
-  max-height: 36px;
+  width: auto;
+  height: 100%;
+  max-height: 34px;
   object-fit: contain;
 }
 .timeline-node .timeline-logo-lanl {
   background: #f4f6fa;
 }
 .timeline-node .timeline-logo-lanl img {
-  max-width: 92%;
+  max-width: 80%;
 }
 .timeline-node .timeline-logo-bridge {
   background: #fff;
 }
 .timeline-node .timeline-logo-bridge img {
-  max-width: 96%;
+  max-width: 90%;
   mix-blend-mode: multiply;
 }
 .timeline-copy { padding: 14px 16px; }
@@ -908,7 +908,7 @@ footer p:last-child { justify-self: end; }
   .journey { width: 100%; padding-right: 16px; padding-left: 16px; }
   .timeline-line { left: 20px; }
   .timeline-node { grid-template-columns: 1fr; width: calc(100% - 55px); margin: 0 0 40px 55px; }
-  .timeline-node figure { min-height: 60px; }
+  .timeline-node figure { height: 54px; min-height: 0; }
   .timeline-left, .timeline-right { transform: none; }
   .timeline-left .timeline-dot, .timeline-right .timeline-dot { left: -55px; right: auto; }
   .research-callout { display: block; }
