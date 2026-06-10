@@ -642,17 +642,17 @@ h1 {
 .timeline-node:last-child { margin-bottom: 0; }
 .timeline-left { margin-right: auto; transform: translateX(-3px); }
 .timeline-right { margin-left: auto; transform: translateX(3px); }
-.timeline-node figure { min-height: 130px; margin: 0; }
+.timeline-node figure { min-height: 65px; margin: 0; }
 .timeline-node figure img { height: 100%; object-fit: cover; }
 .timeline-node .timeline-logo {
   display: grid;
-  padding: 22px;
+  padding: 12px;
   background: #b10202;
   place-items: center;
 }
 .timeline-node .timeline-logo img {
   height: auto;
-  max-height: 150px;
+  max-height: 75px;
   object-fit: contain;
 }
 .timeline-node .timeline-logo-lanl {
@@ -668,8 +668,8 @@ h1 {
   max-width: 96%;
   mix-blend-mode: multiply;
 }
-.timeline-copy { padding: 18px 20px; }
-.timeline-copy h3 { margin-bottom: 13px; font-size: 1.5rem; font-weight: 500; }
+.timeline-copy { padding: 14px 16px; }
+.timeline-copy h3 { margin-bottom: 8px; font-size: 1.3rem; font-weight: 500; }
 .timeline-copy > p:nth-child(3) { color: var(--muted); font-size: .9rem; line-height: 1.65; }
 .tag {
   display: inline-block;
@@ -897,7 +897,7 @@ footer p:last-child { justify-self: end; }
   .journey { width: 100%; padding-right: 16px; padding-left: 16px; }
   .timeline-line { left: 20px; }
   .timeline-node { grid-template-columns: 1fr; width: calc(100% - 55px); margin: 0 0 40px 55px; }
-  .timeline-node figure { min-height: 160px; }
+  .timeline-node figure { min-height: 80px; }
   .timeline-left, .timeline-right { transform: none; }
   .timeline-left .timeline-dot, .timeline-right .timeline-dot { left: -55px; right: auto; }
   .research-callout { display: block; }
