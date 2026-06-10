@@ -11,6 +11,8 @@ const primaryStar = document.querySelector(".binary-primary");
 const secondaryStar = document.querySelector(".binary-secondary");
 const solarSystem = document.querySelector(".solar-system");
 const planets = [...document.querySelectorAll(".planet")];
+const nebula = document.querySelector(".nebula");
+const starsLarge = document.querySelector(".stars-large");
 
 document.getElementById("year").textContent = new Date().getFullYear();
 
@@ -27,18 +29,20 @@ navLinks.forEach((link) => {
   });
 });
 
-planets.forEach((planet) => {
-  planet.addEventListener("click", () => {
-    const selected = planet.dataset.panel;
-    planets.forEach((item) => {
-      item.classList.toggle("is-active", item === planet);
-    });
-    document.querySelectorAll(".orbit-panel").forEach((panel) => {
-      const active = panel.dataset.panelContent === selected;
-      panel.hidden = !active;
-      panel.classList.toggle("is-active", active);
-    });
+const activatePanel = (planet) => {
+  const selected = planet.dataset.panel;
+  planets.forEach((item) => {
+    item.classList.toggle("is-active", item === planet);
   });
+  document.querySelectorAll(".orbit-panel").forEach((panel) => {
+    const active = panel.dataset.panelContent === selected;
+    panel.hidden = !active;
+    panel.classList.toggle("is-active", active);
+  });
+};
+
+planets.forEach((planet) => {
+  planet.addEventListener("click", () => activatePanel(planet));
 });
 
 if (solarSystem && planets.length) {
@@ -86,6 +90,7 @@ if (solarSystem && planets.length) {
     planet.addEventListener("pointerenter", () => {
       hoveredPlanets.add(planet);
       syncOrbitPause();
+      activatePanel(planet);
     });
     planet.addEventListener("pointerleave", () => {
       hoveredPlanets.delete(planet);
@@ -104,7 +109,8 @@ if (solarSystem && planets.length) {
   });
 
   const placePlanets = (time) => {
-    if (!orbitPaused && !reduceMotion) orbitElapsed += time - lastOrbitFrame;
+    const delta = Math.min(time - lastOrbitFrame, 50);
+    if (!orbitPaused && !reduceMotion) orbitElapsed += delta;
     lastOrbitFrame = time;
 
     planets.forEach((planet) => {
@@ -120,7 +126,7 @@ if (solarSystem && planets.length) {
       const rotatedY = x * Math.sin(rotation) + y * Math.cos(rotation);
       planet.classList.toggle("label-left", rotatedX > 95);
       planet.style.transform =
-        `translate(-50%, -50%) translate(${rotatedX}px, ${rotatedY}px)`;
+        `translate3d(calc(-50% + ${rotatedX}px), calc(-50% + ${rotatedY}px), 0)`;
     });
 
     if (!reduceMotion) requestAnimationFrame(placePlanets);
@@ -266,7 +272,9 @@ const updateScrollEffects = () => {
   header.classList.toggle("is-scrolled", y > 28);
 
   if (!reduceMotion) {
-    document.documentElement.style.setProperty("--parallax", `${Math.min(y * 0.075, 110)}px`);
+    const parallax = Math.min(y * 0.05, 70);
+    if (nebula) nebula.style.transform = `translate3d(0, ${parallax}px, 0) scale(1.08)`;
+    if (starsLarge) starsLarge.style.transform = `translateY(${-parallax * 0.5}px)`;
   }
 
   let current = "";
