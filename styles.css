@@ -594,6 +594,8 @@ h1 {
 .journey {
   width: 100%;
   max-width: none;
+  padding-top: 80px;
+  padding-bottom: 80px;
   padding-right: 24px;
   padding-left: 24px;
   padding-right: max(24px, calc((100% - var(--max)) / 2));
@@ -628,7 +630,7 @@ h1 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   width: calc(50% - 48px);
-  margin-bottom: 68px;
+  margin-bottom: 36px;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 20px;
@@ -640,7 +642,7 @@ h1 {
 .timeline-node:last-child { margin-bottom: 0; }
 .timeline-left { margin-right: auto; transform: translateX(-3px); }
 .timeline-right { margin-left: auto; transform: translateX(3px); }
-.timeline-node figure { min-height: 170px; margin: 0; }
+.timeline-node figure { min-height: 130px; margin: 0; }
 .timeline-node figure img { height: 100%; object-fit: cover; }
 .timeline-node .timeline-logo {
   display: grid;
@@ -894,8 +896,8 @@ footer p:last-child { justify-self: end; }
   .orbit-content { padding: 24px; }
   .journey { width: 100%; padding-right: 16px; padding-left: 16px; }
   .timeline-line { left: 20px; }
-  .timeline-node { grid-template-columns: 1fr; width: calc(100% - 55px); margin: 0 0 70px 55px; }
-  .timeline-node figure { min-height: 220px; }
+  .timeline-node { grid-template-columns: 1fr; width: calc(100% - 55px); margin: 0 0 40px 55px; }
+  .timeline-node figure { min-height: 160px; }
   .timeline-left, .timeline-right { transform: none; }
   .timeline-left .timeline-dot, .timeline-right .timeline-dot { left: -55px; right: auto; }
   .research-callout { display: block; }
