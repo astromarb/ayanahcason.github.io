@@ -641,6 +641,7 @@ h1 {
 .timeline-left { margin-right: auto; transform: translateX(-3px); }
 .timeline-right { margin-left: auto; transform: translateX(3px); }
 .timeline-node figure { height: 54px; margin: 0; overflow: hidden; }
+.timeline-node figure.timeline-hero { height: 200px; }
 .timeline-node figure img { width: 100%; height: 100%; object-fit: cover; border-radius: 0; display: block; }
 .timeline-node .timeline-logo {
   display: grid;
@@ -909,6 +910,7 @@ footer p:last-child { justify-self: end; }
   .timeline-line { left: 20px; }
   .timeline-node { grid-template-columns: 1fr; width: calc(100% - 55px); margin: 0 0 40px 55px; }
   .timeline-node figure { height: 54px; min-height: 0; }
+  .timeline-node figure.timeline-hero { height: 160px; }
   .timeline-left, .timeline-right { transform: none; }
   .timeline-left .timeline-dot, .timeline-right .timeline-dot { left: -55px; right: auto; }
   .research-callout { display: block; }
