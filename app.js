@@ -20,10 +20,25 @@ menuToggle.addEventListener("click", () => {
   nav.classList.toggle("is-open", !open);
 });
 
+const navVeil = document.createElement("div");
+navVeil.id = "nav-veil";
+document.body.appendChild(navVeil);
+
 navLinks.forEach((link) => {
-  link.addEventListener("click", () => {
+  link.addEventListener("click", (e) => {
+    const href = link.getAttribute("href");
+    const target = href && document.querySelector(href);
     nav.classList.remove("is-open");
     menuToggle.setAttribute("aria-expanded", "false");
+
+    if (!target || reduceMotion) return;
+
+    e.preventDefault();
+    navVeil.classList.remove("is-warping");
+    void navVeil.offsetWidth;
+    navVeil.classList.add("is-warping");
+    setTimeout(() => target.scrollIntoView({ behavior: "instant" }), 200);
+    navVeil.addEventListener("animationend", () => navVeil.classList.remove("is-warping"), { once: true });
   });
 });
 

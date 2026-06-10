@@ -73,6 +73,22 @@ img { display: block; width: 100%; }
   background-size: 520px 520px;
 }
 
+#nav-veil {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  background: #060712;
+  opacity: 0;
+  pointer-events: none;
+}
+@keyframes nav-warp {
+  0%   { opacity: 0; }
+  38%  { opacity: 0.88; }
+  62%  { opacity: 0.88; }
+  100% { opacity: 0; }
+}
+#nav-veil.is-warping { animation: nav-warp 0.54s cubic-bezier(0.4, 0, 0.2, 1) both; }
+
 .site-header {
   position: fixed;
   top: 0;
