@@ -15,7 +15,6 @@
 html {
   max-width: 100%;
   overflow-x: hidden;
-  scroll-behavior: smooth;
 }
 body {
   max-width: 100%;
@@ -47,12 +46,14 @@ img { display: block; width: 100%; }
 .space-backdrop { position: fixed; inset: 0; z-index: -3; overflow: hidden; }
 .nebula {
   position: absolute;
-  inset: -10%;
+  inset: -20%;
   background-image: linear-gradient(rgba(4, 5, 14, .4), rgba(4, 5, 14, .75)), url("photos/intergalactic-bg.jpg");
   background-position: center;
   background-size: cover;
   transform: scale(1.08);
+  will-change: transform;
 }
+.stars-large { will-change: transform; }
 .stars { position: absolute; inset: 0; opacity: .55; }
 .stars-small {
   background-image:
@@ -73,21 +74,6 @@ img { display: block; width: 100%; }
   background-size: 520px 520px;
 }
 
-#nav-veil {
-  position: fixed;
-  inset: 0;
-  z-index: 9998;
-  background: #060712;
-  opacity: 0;
-  pointer-events: none;
-}
-@keyframes nav-warp {
-  0%   { opacity: 0; }
-  38%  { opacity: 0.88; }
-  62%  { opacity: 0.88; }
-  100% { opacity: 0; }
-}
-#nav-veil.is-warping { animation: nav-warp 0.54s cubic-bezier(0.4, 0, 0.2, 1) both; }
 
 .site-header {
   position: fixed;
@@ -942,9 +928,8 @@ footer p:last-child { justify-self: end; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
-  .nebula, .stars-large { transform: none !important; }
+  .nebula, .stars-large { transform: none !important; will-change: auto; }
 }
 
 @supports not (backdrop-filter: blur(1px)) {

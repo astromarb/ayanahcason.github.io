@@ -20,9 +20,24 @@ menuToggle.addEventListener("click", () => {
   nav.classList.toggle("is-open", !open);
 });
 
-const navVeil = document.createElement("div");
-navVeil.id = "nav-veil";
-document.body.appendChild(navVeil);
+const easeInOutQuart = (t) =>
+  t < 0.5 ? 8 * t * t * t * t : 1 - Math.pow(-2 * t + 2, 4) / 2;
+
+let scrollRaf = null;
+const smoothScrollTo = (targetY) => {
+  if (scrollRaf) cancelAnimationFrame(scrollRaf);
+  const startY = window.scrollY;
+  const dist = targetY - startY;
+  const duration = Math.min(Math.max(Math.abs(dist) * 0.55, 380), 860);
+  let startTime = null;
+  const step = (ts) => {
+    if (!startTime) startTime = ts;
+    const p = Math.min((ts - startTime) / duration, 1);
+    window.scrollTo(0, startY + dist * easeInOutQuart(p));
+    if (p < 1) scrollRaf = requestAnimationFrame(step);
+  };
+  scrollRaf = requestAnimationFrame(step);
+};
 
 navLinks.forEach((link) => {
   link.addEventListener("click", (e) => {
@@ -30,15 +45,11 @@ navLinks.forEach((link) => {
     const target = href && document.querySelector(href);
     nav.classList.remove("is-open");
     menuToggle.setAttribute("aria-expanded", "false");
-
-    if (!target || reduceMotion) return;
-
+    if (!target) return;
     e.preventDefault();
-    navVeil.classList.remove("is-warping");
-    void navVeil.offsetWidth;
-    navVeil.classList.add("is-warping");
-    setTimeout(() => target.scrollIntoView({ behavior: "instant" }), 200);
-    navVeil.addEventListener("animationend", () => navVeil.classList.remove("is-warping"), { once: true });
+    const top = Math.max(0, target.getBoundingClientRect().top + window.scrollY - 72);
+    if (reduceMotion) { window.scrollTo({ top, behavior: "instant" }); return; }
+    smoothScrollTo(top);
   });
 });
 
@@ -280,9 +291,17 @@ if (binaryOrbit && primaryStar && secondaryStar) {
   requestAnimationFrame(placeBinaryStars);
 }
 
+const nebula = document.querySelector(".nebula");
+const starsLarge = document.querySelector(".stars-large");
+
 const updateScrollEffects = () => {
   const y = window.scrollY;
   header.classList.toggle("is-scrolled", y > 28);
+
+  if (!reduceMotion) {
+    if (nebula) nebula.style.transform = `scale(1.08) translateY(${y * 0.032}px)`;
+    if (starsLarge) starsLarge.style.transform = `translateY(${y * 0.016}px)`;
+  }
 
 
   let current = "";
